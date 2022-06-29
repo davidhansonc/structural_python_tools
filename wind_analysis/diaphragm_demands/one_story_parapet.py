@@ -7,18 +7,25 @@ def clean_data(wls_csv):
     wls_data = wls_data.dropna(how="all")
     wls_data = wls_data.dropna(axis=1, how="all")
     wls_data.fillna("-", inplace=True)
+    wls_data.index = range(len(wls_data.index))
     return wls_data
 
 
 # Gets wind pressures from WLS data. 
 # Parameter filepath string to CSV of WLS data
 def get_pressures(wls_data):
-    WW = wls_data.loc[wls_data["Surface"] == \
-        "Windward Wall", "Net w/ +GCpi (psf)"].values[0]
+    WW_base_index = wls_data.index[wls_data["Surface"] == "Windward Wall"][0]
+    WW_number = int(wls_data._get_value(WW_base_index, "#"))
+    next_item_number = int(WW_number) + 1
+    WW_index = wls_data.index[wls_data["#"] == str(next_item_number)][0] - 2
+    WW = wls_data._get_value(WW_index, "Net w/ +GCpi (psf)")
+    print(WW)
+
     LW = wls_data.loc[wls_data["Surface"] == \
         "Leeward Wall", "Net w/ +GCpi (psf)"].values[0]
 
-    WP_index = wls_data.index[wls_data["Surface"] == "Windward Wall"][0] + 1
+    # Windward Parapet Pressure
+    WP_index = WW_index + 1
     WP = wls_data._get_value(WP_index, "Ext Pres (psf)")
 
     LP_index = wls_data.index[wls_data["Surface"] == "Leeward Wall"][0] + 1
@@ -56,11 +63,11 @@ def get_geometry(wls_data, roof_slope, roof_length):
 
 
 # Calculates the diaphragm demand from WLS data.
-def diaphragm_calc(wind_pressures, geometry):
-    wall_load = (wind_pressures["WWP"] - wind_pressures["LWP"]) * geometry["eave height"]/2
-    parapet_load = (wind_pressures["WPP"] - wind_pressures["LPP"]) * geometry["parapet height"]
-    roof_lateral_load = wind_pressures["RP"] * geometry["roof length"] \
-        * geometry["roof slope"]/np.sqrt(geometry["roof slope"]**2 + 12**2)
+def diaphragm_calc(wind_pressures, eave_height, parapet_height, roof_length, roof_slope):
+    wall_load = (wind_pressures["WW"] - wind_pressures["LW"]) * eave_height/2
+    parapet_load = (wind_pressures["WP"] - wind_pressures["LP"]) * parapet_height
+    roof_lateral_load = wind_pressures["R"] * roof_length \
+        * roof_slope/np.sqrt(roof_slope**2 + 12**2)
     
     roof_diaphragm_load = wall_load + parapet_load - roof_lateral_load
     return roof_diaphragm_load

@@ -33,7 +33,7 @@ def get_pressures(wls_data):
 
 
 # Calculates the diaphragm demand from WLS data.
-# requires roof length and eave height in feet and slope (x/12)
+# requires total roof length and eave height in feet and slope (x/12)
 def diaphragm_calc(wind_pressures, eave_height, roof_length, roof_slope):
     wall_load = (wind_pressures["WW"] - wind_pressures["LW"]) * eave_height/2
     roof_lateral_load = (wind_pressures["WR"] - wind_pressures["LR"]) \

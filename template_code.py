@@ -39,15 +39,8 @@ from indeterminatebeam import (
 
 ### EXAMPLE HEADER ###
 # Import Python Tools:
-from IPython.display import display, Math, Markdown, Latex
+from IPython.display import display, Latex
 import numpy as np
-import pandas as pd
+from numpy import sqrt, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg, pi
 
-import os, sys
-
-p1 = os.path.abspath('.')
-sys.path.insert(1, p1)
-
-import design_load_summary as dls
-import steel_reinforcement as rebar
 display(Latex(r"\newpage")) #pagebreak

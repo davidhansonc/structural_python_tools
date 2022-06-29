@@ -25,5 +25,5 @@ def E3(Ag, L, r, K=1.0, Fy=50.0, E=29000.0, type="LRFD"):
         return phi * Pn
     elif type == "ASD":
         return Pn / omega
-    else:
+    elif type == "Nom":
         return Pn
