@@ -4,7 +4,7 @@ from this import d
 from tkinter import W
 import numpy as np
 
-def LRFD(dir="P", D=0, L=0, Lr=0, S=0, R=0, W=0, Ev=0, Eh=0):
+def LRFD(D=0, L=0, Lr=0, S=0, R=0, W=0, Ev=0, Eh=0, dir="P"):
     combos = [
         1.4*D,
         1.2*D + 1.6*L + 0.5*max(Lr, S, R),
@@ -21,7 +21,7 @@ def LRFD(dir="P", D=0, L=0, Lr=0, S=0, R=0, W=0, Ev=0, Eh=0):
         ultimate_load = min(combos)
     return ultimate_load
 
-def ASD(dir="P", D=0, L=0, Lr=0, S=0, R=0, W=0, Ev=0, Eh=0):
+def ASD(D=0, L=0, Lr=0, S=0, R=0, W=0, Ev=0, Eh=0, dir="P"):
     combos = [
         D,
         D + L,

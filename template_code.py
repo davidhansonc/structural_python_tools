@@ -42,11 +42,22 @@ from indeterminatebeam import (
 import pandas as pd
 import numpy as np
 from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
+import sectionproperties as shape
 
 import load_combos
+
 from steel_design.AISC import aisc
-from concrete_design.material_properties import elastic_modulus, rigidity_modulus
+steel_density = 0.2833 #pci
+
+from concrete_design import material_properties as conc
 from concrete_design.steel_reinforcement import rebar_df as rebar
-from masonry_design.material_properties import NW_CMU, cmu_elastic_modulus
+conc_density = 150.0 #pcf
+
+from masonry_design import material_properties as cmu
+from masonry_design.material_properties import NW_CMU
+
+from wood_design.ref_design_values.table_4a.table_4a import table_4a_load
+table_4a = table_4a_load(species="DF")
+
 conc_density = 150.0 #pcf
 steel_density = 0.2833 #pci

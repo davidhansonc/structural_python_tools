@@ -16,3 +16,12 @@ def rigidity_modulus (Ec=3031.25, nu=0.15):
 def rupture_modulus(fc=2500.0, lmbd=1.0):
     fr = 7.5 * lmbd * sqrt(fc)
     return fr
+
+
+def cracked_moment_inertia(b, h, d, d_c, Ec, As, As_c, Es=29000):
+    n = Es / Ec
+    rho = As / (b*d)
+    cs = n*rho*d*(sqrt(1 + 2/(n*rho) - 1))
+    
+    Icr = b*cs**3/3 + n*As*(d-cs)**2
+    return Icr
