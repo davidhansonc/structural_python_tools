@@ -39,8 +39,14 @@ from indeterminatebeam import (
 
 ### EXAMPLE HEADER ###
 # Import Python Tools:
-from IPython.display import display, Latex
+import pandas as pd
 import numpy as np
-from numpy import sqrt, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg, pi
+from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
 
-display(Latex(r"\newpage")) #pagebreak
+import load_combos
+from steel_design.AISC import aisc
+from concrete_design.material_properties import elastic_modulus, rigidity_modulus
+from concrete_design.steel_reinforcement import rebar_df as rebar
+from masonry_design.material_properties import NW_CMU, cmu_elastic_modulus
+conc_density = 150.0 #pcf
+steel_density = 0.2833 #pci

@@ -34,8 +34,22 @@ def dowel_withdrawal(W_nominal, penetration=1.0, C_D=1.0, C_M=1.0, C_t=1.0, C_eg
     return W_factored
 
 # alpha angle from pure shear in degrees
-def combo_screw_shear_withdrawal(Z_factored, W_factored, penetration=1.0, alpha=0.0):
-    Wp = W_factored * penetration
-    alpha_rad = np.deg2rad(alpha)
-    Z_alpha_factored = Wp * Z_factored / (Wp * np.cos(alpha_rad) + Z_factored * np.sin(alpha_rad))
-    return Z_alpha_factored
+def combined_nail_Z(Z_pr, W_pr, penetration, alpha, conv="deg"):
+    if conv == "deg":
+        alpha_rad = np.deg2rad(alpha)
+    elif conv == "rad":
+        alpha_rad = alpha
+    Wp = W_pr * penetration
+    Z_alpha_pr = Wp * Z_pr / (Wp * np.cos(alpha_rad) + Z_pr * np.sin(alpha_rad))
+    return Z_alpha_pr
+
+
+# alpha angle from pure shear in degrees
+def combined_scew_Z(Z_pr, W_pr, penetration, alpha, conv="deg"):
+    if conv == "deg":
+        alpha_rad = np.deg2rad(alpha)
+    elif conv == "rad":
+        alpha_rad = alpha
+    Wp = W_pr * penetration
+    Z_alpha_pr = Wp * Z_pr / (Wp * np.cos(alpha_rad)**2 + Z_pr * np.sin(alpha_rad)**2)
+    return Z_alpha_pr
