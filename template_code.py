@@ -44,7 +44,7 @@ import numpy as np
 from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
 import sectionproperties as shape
 
-import load_combos
+import ASCE.load_combos
 
 from steel_design.AISC import aisc
 steel_density = 0.2833 #pci
