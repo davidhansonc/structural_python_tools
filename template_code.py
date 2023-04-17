@@ -42,7 +42,7 @@ from indeterminatebeam import (
 import pandas as pd
 import numpy as np
 from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
-import sectionproperties as shape
+# import sectionproperties as shape
 
 import ASCE.load_combos
 
