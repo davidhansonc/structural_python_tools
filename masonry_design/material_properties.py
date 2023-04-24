@@ -4,7 +4,7 @@ from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2
 
 
 # Weights in PSF
-CMU_weights_file = r"C:\Users\dhanson\Desktop\Resources\python_resources\masonry_design\CMU_weights.xlsx"
+CMU_weights_file = r"C:\Users\dhanson\Desktop\Resources\structural_python_tools\masonry_design\CMU_weights.xlsx"
 
 LW_CMU = pd.read_excel(CMU_weights_file, sheet_name="LW CMU (PSF)", index_col=0)
 MW_CMU = pd.read_excel(CMU_weights_file, sheet_name="MW CMU (PSF)", index_col=0)
