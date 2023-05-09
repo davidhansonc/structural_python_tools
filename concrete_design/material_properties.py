@@ -3,8 +3,8 @@ import numpy as np
 from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
 
 
-def elastic_modulus (fc=2500.0, wc=150.0): #Ec calc in ksi
-    Ec = wc**1.5 * 33 * sqrt(fc) / 1000
+def elastic_modulus (fc=2500.0, wc=150.0): #Ec calc in psi
+    Ec = wc**1.5 * 33 * sqrt(fc)
     return Ec
 
 
@@ -18,7 +18,7 @@ def rupture_modulus(fc=2500.0, lmbd=1.0):
     return fr
 
 
-def cracked_moment_inertia(b, h, d, d_c, Ec, As, As_c, Es=29000):
+def cracked_moment_inertia(b, d, Ec, As, Es=29000000):
     n = Es / Ec
     rho = As / (b*d)
     cs = n*rho*d*(sqrt(1 + 2/(n*rho) - 1))
