@@ -18,6 +18,3 @@ from masonry_design.material_properties import NW_CMU
 
 from wood_design.ref_design_values.table_4a.table_4a import table_4a_load
 table_4a = table_4a_load(species="DF")
-
-conc_density = 150.0 #pcf
-steel_density = 0.2833 #pci

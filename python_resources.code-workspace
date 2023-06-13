@@ -6,6 +6,10 @@
 	],
 	"settings": {
 		"git.ignoreLimitWarning": true,
-		"notebook.output.fontFamily": "Consolas"
+		"notebook.output.fontFamily": "Consolas",
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.autopep8"
+		},
+		"python.formatting.provider": "none"
 	}
 }
