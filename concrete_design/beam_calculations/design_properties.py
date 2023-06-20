@@ -17,9 +17,6 @@ def compression_block(As, fy, Es, b, fc, Apr_s=0, dpr=0, eps_cu=0.003):
     n1 = 0.85*fc*beta_1*b
     n2 = Es*eps_cu*Apr_s - As*fy
     n3 = -Es*eps_cu*Apr_s*dpr
-    print(n1)
-    print(n2)
-    print(n3)
 
     c = (-n2 + np.sqrt(n2**2 - 4*n1*n3)) / (2*n1)
     return c
