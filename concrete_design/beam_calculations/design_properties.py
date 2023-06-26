@@ -39,13 +39,13 @@ def tension_steel_strain(d_t, c):
     return eps_t
 
 
-def phi_factor(eps_t, fy, Es):
+def phi_factor(eps_t, fy=60000, Es=29000000):
     eps_ty = fy / Es
     if eps_t >= eps_ty + 0.003:
         phi_b = 0.9
     elif eps_t <= eps_ty:
         phi_b = 0.65
     else:
-        phi_b = 0.65 + 0.35 * (eps_t - eps_ty) / 0.003
+        phi_b = 0.65 + 0.25 * (eps_t - eps_ty) / 0.003
 
     return phi_b
