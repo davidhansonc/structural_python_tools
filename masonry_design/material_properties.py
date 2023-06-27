@@ -4,8 +4,16 @@ import numpy as np
 from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
 
 
+# Check the operating system
+if os.name == 'posix':  # Unix/Linux/MacOS
+    CMU_weights_file = "/Users/davidhansonc/Desktop/structural_python_tools/masonry_design/CMU_weights.xlsx"
+elif os.name == 'nt':  # Windows
+    CMU_weights_file = "C:\\Users\\dhanson\\Desktop\\Resources\\structural_python_tools\\masonry_design\\CMU_weights.xlsx"
+else:
+    raise OSError("Unsupported operating system.")
+
+
 # Weights in PSF
-CMU_weights_file = "C:\\Users\\dhanson\\Desktop\\Resources\\structural_python_tools\\masonry_design\\CMU_weights.xlsx"
 
 LW_CMU = pd.read_excel(CMU_weights_file, sheet_name="LW CMU (PSF)", index_col=0)
 MW_CMU = pd.read_excel(CMU_weights_file, sheet_name="MW CMU (PSF)", index_col=0)
