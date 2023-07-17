@@ -24,7 +24,7 @@ def dowel_shear(Z_nominal, C_D=1.0, C_M=1.0, C_t=1.0, C_g=1.0, C_delta=1.0, C_eg
     return Z_factored
 
 
-def dowel_withdrawal(W_nominal, penetration=1.0, C_D=1.0, C_M=1.0, C_t=1.0, C_eg=1.0, C_tn="N"):
+def dowel_withdrawal(W_nominal, penetration=1.0, C_D=1.0, C_M=1.0, C_t=1.0, C_eg=1.0, toe_nailing="N"):
     W = W_nominal * penetration
     if toe_nailing == "Y":
         C_tn = 0.67

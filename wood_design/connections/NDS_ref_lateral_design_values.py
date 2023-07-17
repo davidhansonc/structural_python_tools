@@ -2,7 +2,7 @@ import numpy as np
 from numpy import sqrt
 
 
-def single_shear(D, l_m, l_s, F_yb, theta, F_em, F_es):
+def single_shear(D, l_m, l_s, F_yb, theta, dir_m, dir_s, G_m=0.5, G_s = 0.5):
     """
     D = dowel diameter
     F_yb = dowel bending yield strength, psi
@@ -11,9 +11,15 @@ def single_shear(D, l_m, l_s, F_yb, theta, F_em, F_es):
     R_t = l_m / l_s
     l_m = main member dowel bearing length, in
     l_s = side member dowel bearing length, in
-    F_em = main member dowel bearing strength, psi (Table 12.3.3)
-    F_es = side member dowel bearing strength, psi (Table 12.3.3)
+    theta = angle between the direction of the load and the direction of the grain (longitudinal axis of member)
+    G_m = main member specific gravity
+    G_s = side member specific gravity
+    dir_m = main member bearing direction (parallel or perpendicular)
+    dir_m = side member bearing direction (parallel or perpendicular)
     """
+    if 
+        F_em = 11200*G_m
+        F_es = 11200*G_s
     R_e = F_em / F_es
     R_t = l_m / l_s
 
