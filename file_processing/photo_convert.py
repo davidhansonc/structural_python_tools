@@ -26,12 +26,12 @@ def multi_convert(directory):
 if __name__ == '__main__':
     single_or_multi = input("'single' file or 'directory' of files? ")
     if single_or_multi == "single":
-        heic = input("heic file name: ")
-        new_name = input("new name (without extension): ")
-        heic_to_jpg(heic, new_name)
+        heic = input("heic file name: ") #enter without quotes
+        new_name = input("new name (without extension): ") #enter without quotes
+        heic_to_png(heic, new_name)
         print("done!")
     elif single_or_multi == "directory":
-        directory = input("directory of photos: ")
+        directory = input("directory of photos: ")  #enter path without quotes.
         multi_convert(directory)
         print("done!")
     else:
