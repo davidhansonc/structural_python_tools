@@ -45,7 +45,7 @@ def get_pressures(wls_data):
 
 
 # Gets building geometry from WLS data
-# Parameter takes Pandas dataframe pluse slope and length values.
+# Parameter takes Pandas dataframe plus slope and length values.
 def get_geometry(wls_data, roof_slope, roof_length):
     eave_height = int(wls_data.loc[wls_data["Surface"] == \
         "Windward Wall", "z (ft)"].values[0])
@@ -63,7 +63,7 @@ def get_geometry(wls_data, roof_slope, roof_length):
 
 
 # Calculates the diaphragm demand from WLS data.
-def diaphragm_calc(wind_pressures, eave_height, parapet_height, roof_length, roof_slope):
+def diaphragm_calc(wind_pressures, eave_height, parapet_height, roof_length=0, roof_slope=0):
     wall_load = (wind_pressures["WW"] - wind_pressures["LW"]) * eave_height/2
     parapet_load = (wind_pressures["WP"] - wind_pressures["LP"]) * parapet_height
     roof_lateral_load = wind_pressures["R"] * roof_length \
