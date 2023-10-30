@@ -8,7 +8,7 @@ from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2
 if os.name == 'posix':  # Unix/Linux/MacOS
     CMU_weights_file = "/Users/davidhansonc/Desktop/structural_python_tools/masonry_design/CMU_weights.xlsx"
 elif os.name == 'nt':  # Windows
-    CMU_weights_file = "C:\\Users\\dhanson\\Desktop\\Resources\\structural_python_tools\\masonry_design\\CMU_weights.xlsx"
+    CMU_weights_file = r"C:\Users\david\structural_python_tools\masonry_design\CMU_weights.xlsx"
 else:
     raise OSError("Unsupported operating system.")
 

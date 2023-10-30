@@ -22,7 +22,7 @@ def E3_Fcr (K, L, r, E, Fy, Fe):
     return Fcr
 
 
-def E3 (Ag, L, r, K=1.0, Fy=50, E=29000):
+def E3 (Ag, r, L, K=1.0, Fy=50, E=29000):
     '''
     - AISC section E3 flexural buckling of members without slender elements.
     - Units: kips, inches, ksi

@@ -6,7 +6,7 @@ import numpy as np
 if os.name == 'posix':  # Unix/Linux/MacOS
     table_4a_file = "/Users/davidhansonc/Desktop/structural_python_tools/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
 elif os.name == 'nt':  # Windows
-    table_4a_file = r"C:\Users\dhanson\Desktop\Resources\structural_python_tools\wood_design\sawn_lumber\ref_design_values\Table_4A.xlsx"
+    table_4a_file = r"C:\Users\david\structural_python_tools\wood_design\sawn_lumber\ref_design_values\Table_4A.xlsx"
 else:
     raise OSError("Unsupported operating system.")
 
