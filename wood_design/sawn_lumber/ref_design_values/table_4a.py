@@ -1,12 +1,18 @@
-import os
 import pandas as pd
 import numpy as np
+import platform
+import os
 
+system = platform.system()
+current_directory = os.getcwd()
 
-if os.name == 'posix':  # Unix/Linux/MacOS
-    table_4a_file = "/Users/davidhansonc/Desktop/structural_python_tools/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
-elif os.name == 'nt':  # Windows
-    table_4a_file = r"C:Program Files\structural_python_tools\wood_design\sawn_lumber\ref_design_values\Table_4A.xlsx"
+# Check the operating system
+if system == 'Darwin':
+	table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
+elif system == 'Windows':
+	table_4a_file = current_directory + "\\wood_design\\sawn_lumber\\ref_design_values\\Table_4A.xlsx"
+elif system == 'Linux':
+	table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
 else:
     raise OSError("Unsupported operating system.")
 

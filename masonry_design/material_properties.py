@@ -1,14 +1,19 @@
-import os
 import pandas as pd
 import numpy as np
 from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
+import platform
+import os
 
+system = platform.system()
+current_directory = os.getcwd()
 
 # Check the operating system
-if os.name == 'posix':  # Unix/Linux/MacOS
-    CMU_weights_file = "/Users/davidhansonc/Desktop/structural_python_tools/masonry_design/CMU_weights.xlsx"
-elif os.name == 'nt':  # Windows
-    CMU_weights_file = r"C:Program Files\structural_python_tools\masonry_design\CMU_weights.xlsx"
+if system == 'Darwin':
+	CMU_weights_file= current_directory + "/masonry_design/CMU_weights.xlsx"
+elif system == 'Windows':
+	CMU_weights_file = current_directory + "\\masonry_design\\CMU_weights.xlsx"
+elif system == 'Linux':
+	CMU_weights_file= current_directory + "/masonry_design/CMU_weights.xlsx"
 else:
     raise OSError("Unsupported operating system.")
 

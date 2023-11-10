@@ -1,20 +1,19 @@
 import pandas as pd
 import numpy as np
 import platform
+import os
 
 system = platform.system()
-
-shapes_database_file = ""
-windows_path = r"C:\Program Files\structural_python_tools\steel_design\aisc-shapes-database-v15.0.xlsx"
+current_directory = os.getcwd()
 
 if system == 'Darwin':
-	shapes_database_file = "/Users/davidhansonc/Desktop/structural_python_tools/steel_design/aisc-shapes-database-v15.0.xlsx"
+	shapes_database_file = current_directory + "/steel_design/aisc-shapes-database-v15.0.xlsx"
 elif system == 'Windows':
-	shapes_database_file = windows_path
+	shapes_database_file = current_directory + "\\steel_design\\aisc-shapes-database-v15.0.xlsx"
 elif system == 'Linux':
-	shapes_database_file = "/Users/davidhansonc/Desktop/structural_python_tools/steel_design/aisc-shapes-database-v15.0.xlsx"
+	shapes_database_file = current_directory + "/steel_design/aisc-shapes-database-v15.0.xlsx"
 else:
-	print('Unknown')
+    raise OSError("Unsupported operating system.")
 
 
 aisc = pd.read_excel(shapes_database_file, sheet_name="Database v15.0", index_col=0)
