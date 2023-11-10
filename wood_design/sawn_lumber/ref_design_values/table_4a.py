@@ -4,15 +4,18 @@ import platform
 import os
 
 system = platform.system()
-current_directory = os.getcwd()
+# current_directory = os.getcwd()
 
 # Check the operating system
 if system == 'Darwin':
-	table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
+    current_directory = "/structural_python_tools"
+    table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_5A.xlsx"
 elif system == 'Windows':
-	table_4a_file = current_directory + "\\wood_design\\sawn_lumber\\ref_design_values\\Table_4A.xlsx"
+    current_directory = "C:\\structural_python_tools"
+    table_4a_file = current_directory + "\\wood_design\\sawn_lumber\\ref_design_values\\Table_4A.xlsx"
 elif system == 'Linux':
-	table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
+    current_directory = "/structural_python_tools"
+    table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
 else:
     raise OSError("Unsupported operating system.")
 
