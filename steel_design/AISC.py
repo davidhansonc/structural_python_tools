@@ -7,7 +7,7 @@ system = platform.system()
 # current_directory = os.getcwd()
 
 if system == 'Darwin':
-    current_directory = "/structural_python_tools"
+    current_directory = "~/structural_python_tools"
     shapes_database_file = current_directory + "/steel_design/aisc-shapes-database-v15.0.xlsx"
 elif system == 'Windows':
     current_directory = "C:\\structural_python_tools"
