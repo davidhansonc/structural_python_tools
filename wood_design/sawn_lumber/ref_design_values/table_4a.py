@@ -11,7 +11,7 @@ if system == 'Darwin':
     current_directory = "~/structural_python_tools"
     table_4a_file = current_directory + "/wood_design/sawn_lumber/ref_design_values/Table_4A.xlsx"
 elif system == 'Windows':
-    current_directory = "C:\\structural_python_tools"
+    current_directory = "C:\\Users\\dhanson\\structural_python_tools"
     table_4a_file = current_directory + "\\wood_design\\sawn_lumber\\ref_design_values\\Table_4A.xlsx"
 elif system == 'Linux':
     current_directory = "/structural_python_tools"
