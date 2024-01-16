@@ -11,7 +11,7 @@ if system == 'Darwin':
     current_directory = "~/structural_python_tools"
     CMU_weights_file = current_directory + "/masonry_design/CMU_weights.xlsx"
 elif system == 'Windows':
-    current_directory = "C:\\structural_python_tools"
+    current_directory = "C:\\Users\\dhanson\\structural_python_tools"
     CMU_weights_file = current_directory + "\\masonry_design\\CMU_weights.xlsx"
 elif system == 'Linux':
     current_directory = "/structural_python_tools"
