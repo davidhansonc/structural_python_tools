@@ -1,23 +1,12 @@
 import pandas as pd
 import numpy as np
 import platform
-# import os
+import os
 
-system = platform.system()
-# current_directory = os.getcwd()
-
-if system == 'Darwin':
-    current_directory = "~/structural_python_tools"
-    shapes_database_file = current_directory + "/steel_design/aisc-shapes-database-v15.0.xlsx"
-elif system == 'Windows':
-    current_directory = "C:\\Users\\dhanson\\structural_python_tools"
-    shapes_database_file = current_directory + "\\steel_design\\aisc-shapes-database-v15.0.xlsx"
-elif system == 'Linux':
-    current_directory = "/structural_python_tools"
-    shapes_database_file = current_directory + "/steel_design/aisc-shapes-database-v15.0.xlsx"
-else:
-    raise OSError("Unsupported operating system.")
-
+# Assuming structural_python_tools is in the user's home directory
+home_directory = os.path.expanduser("~")
+structural_python_tools_directory = os.path.join(home_directory, "structural_python_tools")
+shapes_database_file = os.path.join(structural_python_tools_directory, "steel_design", "aisc-shapes-database-v15.0.xlsx")
 
 aisc = pd.read_excel(shapes_database_file, sheet_name="Database v15.0", index_col=0)
 aisc.replace("-", np.nan, inplace=True)

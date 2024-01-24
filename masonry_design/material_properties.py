@@ -4,20 +4,22 @@ from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2
 import platform
 import os
 
-system = platform.system()
+# Get the home directory
+home_directory = os.path.expanduser("~")
 
-# Check the operating system
-if system == 'Darwin':
-    current_directory = "~/structural_python_tools"
-    CMU_weights_file = current_directory + "/masonry_design/CMU_weights.xlsx"
-elif system == 'Windows':
-    current_directory = "C:\\Users\\dhanson\\structural_python_tools"
-    CMU_weights_file = current_directory + "\\masonry_design\\CMU_weights.xlsx"
-elif system == 'Linux':
-    current_directory = "/structural_python_tools"
-    CMU_weights_file = current_directory + "/masonry_design/CMU_weights.xlsx"
+# Define the directory name for structural_python_tools
+structural_python_tools_dirname = "structural_python_tools"
+
+# Construct the path to structural_python_tools based on the operating system
+if platform.system() == 'Darwin' or platform.system() == 'Linux':
+    structural_python_tools_directory = os.path.join(home_directory, structural_python_tools_dirname)
+elif platform.system() == 'Windows':
+    structural_python_tools_directory = os.path.join(os.environ['USERPROFILE'], structural_python_tools_dirname)
 else:
     raise OSError("Unsupported operating system.")
+
+# Construct the path to CMU_weights.xlsx within structural_python_tools
+CMU_weights_file = os.path.join(structural_python_tools_directory, "masonry_design", "CMU_weights.xlsx")
 
 # Weights in PSF
 LW_CMU = pd.read_excel(CMU_weights_file, sheet_name="LW CMU (PSF)", index_col=0)
