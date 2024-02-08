@@ -1,6 +1,9 @@
 {
 	"folders": [
 		{
+			"path": "../SSE_project_calcs"
+		},
+		{
 			"path": "."
 		}
 	],
