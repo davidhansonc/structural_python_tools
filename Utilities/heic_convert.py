@@ -15,5 +15,6 @@ def convert_heic_to_jpg(directory):
                 jpg_path = os.path.join(new_dir, f"{os.path.splitext(filename)[0]}.jpg")
                 img.save(filename=jpg_path)
 
-# Usage
-convert_heic_to_jpg("/path/to/your/directory")
+if __name__ == "__main__":
+    directory = input("Enter the directory path: ")
+    convert_heic_to_jpg(directory)
