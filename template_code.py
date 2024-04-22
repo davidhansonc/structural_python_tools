@@ -6,9 +6,6 @@ from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2
 from WhatIfAnalysis import GoalSeek
 
 from ASCE import load_combos
-import sys
-sys.path.append('/Users/davidhansonc/Desktop') #add desktop to PATH for development modules
-from WLS.WindParameters import WindParameters #Wind Loads Module
 
 from steel_design.AISC import aisc
 steel_density = 0.2833 #pci

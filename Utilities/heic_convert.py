@@ -2,35 +2,42 @@ import os
 import shutil
 from wand.image import Image
 
-def convert_heic_to_jpg(directory):
-    # Define the path for the new directory for converted images
-    new_dir = os.path.join(directory, "converted_images")
+def convert_heic_to_png(directory):
+    # Define the path for the new directory for original HEIC images
+    original_heic_dir = os.path.join(directory, "original heic images")
     
-    # Check if the directory already exists. If yes, delete it.
-    if os.path.exists(new_dir):
-        shutil.rmtree(new_dir)
-        print("Deleted existing directory of converted images.")
-    
-    # Create a new directory for converted images
-    os.makedirs(new_dir, exist_ok=True)
-    print("Created directory for converted images.")
+    # Create a new directory for original HEIC images if it doesn't exist
+    os.makedirs(original_heic_dir, exist_ok=True)
+    print("Created directory for original HEIC images.")
 
     # Loop through all files in the directory
     for filename in os.listdir(directory):
-        # Convert filename to lowercase before checking the extension
         if filename.lower().endswith(".heic"):
             heic_path = os.path.join(directory, filename)
-            # Convert HEIC to JPG
+            png_path = os.path.join(directory, f"{os.path.splitext(filename)[0]}.png")
+            
             try:
+                # Convert HEIC to PNG
                 with Image(filename=heic_path) as img:
-                    jpg_path = os.path.join(new_dir, f"{os.path.splitext(filename)[0]}.jpg")
-                    img.save(filename=jpg_path)
+                    img.format = 'png'
+                    img.save(filename=png_path)
+                    print(f"Converted {filename} to PNG.")
+
+                # Move the original HEIC file to the original HEIC images directory
+                shutil.move(heic_path, os.path.join(original_heic_dir, filename))
+                print(f"Moved {filename} to 'original heic images' directory.")
+
             except Exception as e:
-                print(f"Error converting {filename}: {e}")
+                print(f"Failed to process {filename}: {e}")
 
     # Print completion message
-    print("Conversions completed.")
+    print("All files processed.")
 
 if __name__ == "__main__":
-    directory = input("Enter the directory path: ")
-    convert_heic_to_jpg(directory)
+    try:
+        directory = input("Enter the directory path: ")
+        if not os.path.exists(directory):
+            raise ValueError("The specified directory does not exist.")
+        convert_heic_to_png(directory)
+    except Exception as e:
+        print(f"An error occurred: {e}")
