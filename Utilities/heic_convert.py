@@ -10,25 +10,30 @@ def convert_heic_to_png(directory):
     os.makedirs(original_heic_dir, exist_ok=True)
     print("Created directory for original HEIC images.")
 
-    # Loop through all files in the directory
-    for filename in os.listdir(directory):
-        if filename.lower().endswith(".heic"):
-            heic_path = os.path.join(directory, filename)
-            png_path = os.path.join(directory, f"{os.path.splitext(filename)[0]}.png")
-            
-            try:
-                # Convert HEIC to PNG
-                with Image(filename=heic_path) as img:
-                    img.format = 'png'
-                    img.save(filename=png_path)
-                    print(f"Converted {filename} to PNG.")
+    # Check if there are any HEIC files in the directory
+    heic_files = [f for f in os.listdir(directory) if f.lower().endswith(".heic")]
+    if not heic_files:
+        print("No HEIC files to convert.")
+        return
+    
+    # Loop through all HEIC files in the directory
+    for filename in heic_files:
+        heic_path = os.path.join(directory, filename)
+        png_path = os.path.join(directory, f"{os.path.splitext(filename)[0]}.png")
+        
+        try:
+            # Convert HEIC to PNG
+            with Image(filename=heic_path) as img:
+                img.format = 'png'
+                img.save(filename=png_path)
+                print(f"Converted {filename} to PNG.")
 
-                # Move the original HEIC file to the original HEIC images directory
-                shutil.move(heic_path, os.path.join(original_heic_dir, filename))
-                print(f"Moved {filename} to 'original heic images' directory.")
+            # Move the original HEIC file to the original HEIC images directory
+            shutil.move(heic_path, os.path.join(original_heic_dir, filename))
+            print(f"Moved {filename} to 'original heic images' directory.")
 
-            except Exception as e:
-                print(f"Failed to process {filename}: {e}")
+        except Exception as e:
+            print(f"Failed to process {filename}: {e}")
 
     # Print completion message
     print("All files processed.")
