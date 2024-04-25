@@ -18,7 +18,7 @@ def convert_hevc_to_mp4(input_path, output_path):
     try:
         print(f"Attempting to convert: {input_path} to {output_path}")
         stream = ffmpeg.input(input_path)
-        stream = ffmpeg.output(stream, output_path, vcodec='libx264', acodec='copy')
+        stream = ffmpeg.output(stream, output_path, vcodec='libx264', pix_fmt='yuv420p', acodec='aac')
         ffmpeg.run(stream)
         print(f"Converted {os.path.basename(input_path)} to MP4.")
         return True
