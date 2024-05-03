@@ -56,7 +56,7 @@ tile = {
 } #psf/in
 
 masonry = {
-	"clay brick": 150,
+	"clay brick": 120,
 	"adobe brick": 100,
 } #pcf
 
