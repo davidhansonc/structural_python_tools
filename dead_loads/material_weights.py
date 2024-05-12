@@ -43,7 +43,7 @@ wood_studs = {
 } #psf/in
 
 veneer = {
-	"stone veneer": 13.75,
+	"limestone veneer": 15,
 	"clay brick veneer": 12.5,
 } #psf/in
 

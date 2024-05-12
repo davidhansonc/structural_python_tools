@@ -1,14 +1,14 @@
 import pandas as pd
 import numpy as np
-from numpy import sqrt, pi, average, cos, sin, tan, arcsin, arccos, arctan, deg2rad, rad2deg
+from numpy import sqrt
 
 
-def elastic_modulus (fc=2500.0, wc=150.0): #Ec calc in psi
+def elastic_modulus (fc=2500.0, wc=145.0): #Ec calc in psi
     Ec = wc**1.5 * 33 * sqrt(fc)
     return Ec
 
 
-def rigidity_modulus (Ec=3031.25, nu=0.15):
+def rigidity_modulus (Ec=elastic_modulus(), nu=0.15):
     Gc = Ec/(2*(1+nu))
     return Gc
 
