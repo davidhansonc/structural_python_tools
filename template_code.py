@@ -9,3 +9,10 @@ from ASCE import load_combos
 
 from steel_design.AISC import aisc
 steel_density = 0.2833 #pci
+
+from concrete_design import material_properties as conc
+from concrete_design.steel_reinforcement import rebar_df as rebar
+conc_density = 150 #pcf
+
+from masonry_design import material_properties as cmu
+from masonry_design.material_properties import NW_CMU #psf
